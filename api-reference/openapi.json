@@ -10,7 +10,7 @@
   },
   "servers": [
     {
-      "url": "http://sandbox.mintlify.com"
+      "url": "https://dev.talvin.ai/v1"
     }
   ],
   "security": [
@@ -20,9 +20,9 @@
     }
   ],
   "paths": {
-    "/plants": {
+    "/interviews": {
       "get": {
-        "description": "Returns all plants from the system that the user has access to",
+        "description": "Returns all interviews that the user has access to",
         "parameters": [
           {
             "name": "limit",
@@ -36,13 +36,13 @@
         ],
         "responses": {
           "200": {
-            "description": "Plant response",
+            "description": "Interview response",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Plant"
+                    "$ref": "#/components/schemas/Interview"
                   }
                 }
               }
@@ -155,6 +155,68 @@
   },
   "components": {
     "schemas": {
+      "Interview": {
+        "required": [
+          "id",
+          "name",
+          "question_count",
+          "time_duration",
+          "questions",
+          "description"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "Unique identifier for the interview",
+            "type": "string"
+          },
+          "name": {
+            "description": "Name of the interview",
+            "type": "string"
+          },
+          "question_count": {
+            "description": "Number of questions in the interview",
+            "type": "integer"
+          },
+          "time_duration": {
+            "description": "Time duration for the interview in minutes",
+            "type": "string"
+          },
+          "questions": {
+            "description": "List of questions in the interview",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Question"
+            }
+          },
+          "description": {
+            "description": "Description of the interview",
+            "type": "string"
+          }
+        }
+      },
+      "Question": {
+        "required": [
+          "id",
+          "question",
+          "follow_up_count"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "Unique identifier for the question",
+            "type": "string"
+          },
+          "question": {
+            "description": "The question text",
+            "type": "string"
+          },
+          "follow_up_count": {
+            "description": "Number of follow-up questions",
+            "type": "integer"
+          }
+        }
+      },
       "Plant": {
         "required": [
           "name"
