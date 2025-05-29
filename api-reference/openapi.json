@@ -13,7 +13,12 @@
       "url": "http://sandbox.mintlify.com"
     }
   ],
-  
+  "security": [
+    {
+      "talvinApiKey": [],
+      "talvinOrgId": []
+    }
+  ],
   "paths": {
     "/plants": {
       "get": {
@@ -204,9 +209,15 @@
       }
     },
     "securitySchemes": {
-      "bearerAuth": {
-        "type": "http",
-        "scheme": "bearer"
+      "talvinApiKey": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-TALVIN-API-KEY"
+      },
+      "talvinOrgId": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-TALVIN-ORGANIZATION-ID"
       }
     }
   }
