@@ -10,7 +10,7 @@
   },
   "servers": [
     {
-      "url": "https://dev.talvin.ai/v1"
+      "url": "https://dev.talvin.ai/api/v1"
     }
   ],
   "security": [
